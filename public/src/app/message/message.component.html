@@ -1,0 +1,23 @@
+<a href="/logout">Logout</a>
+<h1 *ngIf="user">Welcome {{user.name}}</h1>
+<!-- sending strtaight to server go to routes -->
+<form (submit) ="createMessage(formData)" #formData="ngForm">
+  <label>New Message: <input type="text" name="message" ngModel></label>
+  <input type="submit" name="Post Message" value="POST">
+</form>
+<!-- Now we need to go and get all of the messages from our db, get the api/messages route from routes.ts -->
+<!-- go to message component -->
+
+<div class="message" *ngFor="let message of messages" >
+  <h5>{{message._user.name}} {{message.createdAt | date: 'mediumDate'}}</h5>
+  <p>{{message.message}}</p>
+  <div class="comment" *ngFor="let comment of message.comments" >
+    <h5>{{comment._user.name}} - {{comment.createdAt | date: 'mediumDate'}}</h5>
+    <p>{{comment.comment}}</p>
+  </div>
+  <!-- in each one of these messages we'll have another form for comments -->
+  <form (submit)="createComment(formData, message._id)" #formData ="ngForm">
+    <input type="text" name="comment" ngModel>
+    <input type="submit" value="Comment on This">
+  </form>
+</div>

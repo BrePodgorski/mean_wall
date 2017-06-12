@@ -1,0 +1,7 @@
+<form (submit)="login(formData)" #formData="ngForm">
+  <!-- now going into login component to define this function -->
+  <label>Name: <input type="text" name="name" ngModel></label>
+  <input type="submit" name="Login">
+</form>
+
+<!-- when user submits something here it will come into login component -->

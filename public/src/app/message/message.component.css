@@ -1,0 +1,9 @@
+.message{
+  border: 2px solid gray;
+}
+.comment{
+  border: 2px solid red;
+}
+div> p{
+  margin-left: 2vw;
+}
